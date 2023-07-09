@@ -1,0 +1,10 @@
+.images {
+  display: flex;
+  justify-content: space-around;
+}
+.images .imgCards {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+  border-radius: 5px;
+}
