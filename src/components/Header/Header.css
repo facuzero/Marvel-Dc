@@ -26,3 +26,8 @@ li {
   justify-content: space-around;
   text-decoration: wavy;
 }
+.suggestions {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 120px;
+  overflow: scroll;
+}

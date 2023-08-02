@@ -9,4 +9,5 @@ import spider from './marvel-spider.jpg';
 import thor from './marvel-thor.jpg';
 import wolverine from './marvel-wolverine.jpg';
 
+// TOTAL: 1562
 export { captain, cyclops, daredevil, hawkeye, hulk, iron, silver, spider, thor, wolverine };
