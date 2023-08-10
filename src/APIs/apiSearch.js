@@ -1,4 +1,4 @@
-export const MarvelHero = async (name) => {
+export const MarvelHeroes = async (name) => {
   //TOTAL: 1562
   try {
     //FIRST 20 CHARACTERS max:100

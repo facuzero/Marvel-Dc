@@ -1,19 +1,21 @@
 import './Header.css';
 import { logoM, logoD, logoMD } from '../../images/imagesLogo';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-import { MarvelHero } from '../../APIs/apiSearch';
+import { MarvelHeroes } from '../../APIs/apiSearch';
 const Header = () => {
   const [searchValue, setSearchValue] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const emptyRef = useRef('');
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchSuggestions = async () => {
       if (searchValue.trim() === '') {
         setSuggestions([]);
       } else {
         try {
-          const data = await MarvelHero(searchValue);
+          const data = await MarvelHeroes(searchValue);
           const results = data.data.results;
 
           if (emptyRef.current.value !== '') {
@@ -35,9 +37,14 @@ const Header = () => {
     setSearchValue(value);
   };
 
-  const handleSearch = () => {
-    //const value = event.target.value;
-    //console.log(value); VERIFICAR value
+  const handleSearch = async (name) => {
+    try {
+      setSuggestions([]);
+      setSearchValue('');
+      navigate(`/hero/${name}`);
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <header>
@@ -62,7 +69,7 @@ const Header = () => {
           <Link to={'/juegos'}>Juegos</Link>
           <Link to={'/series'}>Series</Link>
           <Link to={'/peliculas'}>Peliculas</Link>
-          <li>
+          <div>
             Buscar heroe
             <input type='search' name='search' id='' onChange={handleChange} ref={emptyRef} />
             <button onClick={handleSearch} name='search'>
@@ -71,11 +78,13 @@ const Header = () => {
             {suggestions.length > 0 && (
               <div className='suggestions'>
                 {suggestions.map((suggestion, index) => (
-                  <li key={index}>{suggestion.name}</li>
+                  <li key={index} onClick={() => handleSearch(suggestion.name)}>
+                    {suggestion.name}
+                  </li>
                 ))}
               </div>
             )}
-          </li>
+          </div>
         </ul>
       </div>
     </header>

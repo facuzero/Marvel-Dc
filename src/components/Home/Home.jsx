@@ -1,11 +1,7 @@
-import Header from '../Header/Header';
 import './Home.css';
 import CardsRandom from '../CardsRandom/CardsRandom';
-import { MarvelChars } from '../../APIs/apiChar';
 
 const Home = () => {
-  const api = import.meta.env.VITE_APIKEYMARVEL;
-
   /* MarvelChars(api)
     .then((data) => {
       const results = data.data.results;
@@ -15,7 +11,6 @@ const Home = () => {
 
   return (
     <div>
-      <Header />
       <CardsRandom />
     </div>
   );
