@@ -1,7 +1,12 @@
 const Juegos = () => {
   return (
     <div>
-      <div>Juegos</div>
+      <div>
+        <iframe
+          src='https://www.minijuegos.com/embed/marvel-vs-capcom-clash-of-super-heroes'
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   );
 };

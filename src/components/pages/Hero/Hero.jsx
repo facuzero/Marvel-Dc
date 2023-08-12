@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MarvelChar } from '../../../APIs/apiChar';
+import { translation } from '../../../APIs/apiTranslate';
 
 const Hero = () => {
   const { name } = useParams();
@@ -21,6 +22,8 @@ const Hero = () => {
     };
     fetchData();
   }, [name]);
+  const translate = translation(hero.description);
+  console.log(translate);
 
   if (!hero) {
     return <div>Cargando...</div>;
